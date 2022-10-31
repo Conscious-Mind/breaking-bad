@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.davidson.breakingbad.R
 import com.davidson.breakingbad.databinding.FragmentHomeBinding
 import com.davidson.breakingbad.viewmodels.HomeViewModel
 
@@ -26,7 +25,7 @@ class HomeFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
-        viewModel.breakingBadCharacterList.observe(viewLifecycleOwner){
+        viewModel.breakingBadCharacterList.observe(viewLifecycleOwner) {
             binding.tvChecking.text = it.toString()
         }
 

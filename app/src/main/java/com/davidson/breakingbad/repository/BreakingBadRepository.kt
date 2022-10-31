@@ -4,13 +4,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.davidson.breakingbad.network.BBNetwork
+import com.davidson.breakingbad.network.TestNetwork
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class BreakingBadRepository {
 
-    private val _characters = MutableLiveData<String>()
-    val characters: LiveData<String>
+    private val _characters = MutableLiveData<List<TestNetwork>>()
+    val characters: LiveData<List<TestNetwork>>
         get() = _characters
 
 
@@ -29,7 +30,5 @@ class BreakingBadRepository {
                 Log.e("ERROR_REPO", (e.message ?: "ERROR IN REPO, Getting Character From Network"))
             }
         }
-
-
     }
 }

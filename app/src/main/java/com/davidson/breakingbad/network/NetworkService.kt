@@ -4,13 +4,12 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 
 const val BASE_URL_RANDOM_USER_API = "https://www.breakingbadapi.com/"
-const val NUMBER_OF_CHARACTERS_TO_FETCH = 100
+const val NUMBER_OF_CHARACTERS_TO_FETCH = 2
 
 
 private val moshi = Moshi.Builder()
@@ -18,8 +17,8 @@ private val moshi = Moshi.Builder()
     .build()
 
 private val retrofitBreakingBad = Retrofit.Builder()
-//    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+//    .addConverterFactory(ScalarsConverterFactory.create())
     .baseUrl(BASE_URL_RANDOM_USER_API)
     .build()
 
@@ -29,9 +28,13 @@ interface BreakingBadNetworkService {
     suspend fun getAllCharactersFromNetwork(
         @Query("limit")
         numberOfCharactersToFetch: Int = NUMBER_OF_CHARACTERS_TO_FETCH
-    ) : String
+    ): List<TestNetwork>
 }
 
 object BBNetwork {
-    val retrofitBreakingBadService: BreakingBadNetworkService by lazy { retrofitBreakingBad.create(BreakingBadNetworkService::class.java) }
+    val retrofitBreakingBadService: BreakingBadNetworkService by lazy {
+        retrofitBreakingBad.create(
+            BreakingBadNetworkService::class.java
+        )
+    }
 }
