@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 
 const val BASE_URL_RANDOM_USER_API = "https://www.breakingbadapi.com/"
-const val NUMBER_OF_CHARACTERS_TO_FETCH = 100
+const val NUMBER_OF_CHARACTERS_TO_FETCH = 50
 
 
 private val moshi = Moshi.Builder()

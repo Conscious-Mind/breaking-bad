@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import com.davidson.breakingbad.database.BreakingBadDatabase
 import com.davidson.breakingbad.database.DatabaseBreakingBad
 import com.davidson.breakingbad.database.asDomainModel
@@ -22,6 +23,7 @@ class BreakingBadRepository(private val database: BreakingBadDatabase) {
         get() = Transformations.map(_characters) {
             it.asDomainModel()
         }
+
 
 
     init {

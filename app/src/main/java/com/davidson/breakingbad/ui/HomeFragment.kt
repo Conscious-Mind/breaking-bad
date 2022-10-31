@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.davidson.breakingbad.adapter.RvBreakingBadHomeAdapter
 import com.davidson.breakingbad.databinding.FragmentHomeBinding
@@ -40,9 +41,9 @@ class HomeFragment : Fragment() {
                     breakingBadCharacter.characterName + breakingBadCharacter.characterId,
                     Toast.LENGTH_SHORT
                 ).show()
-//                val extras = FragmentNavigatorExtras(imageView to "ivCharacterDetail")
+                val extras = FragmentNavigatorExtras(imageView to "ivCharacterDetail")
                 findNavController().navigate(
-                    HomeFragmentDirections.actionHomeFragmentToCharacterFragment()
+                    HomeFragmentDirections.actionHomeFragmentToCharacterFragment(breakingBadCharacter.characterId), extras
                 )
             }
         }

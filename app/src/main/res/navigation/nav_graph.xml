@@ -18,5 +18,9 @@
         android:id="@+id/characterFragment"
         android:name="com.davidson.breakingbad.ui.CharacterFragment"
         android:label="fragment_character"
-        tools:layout="@layout/fragment_character" />
+        tools:layout="@layout/fragment_character" >
+        <argument
+            android:name="characterId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
