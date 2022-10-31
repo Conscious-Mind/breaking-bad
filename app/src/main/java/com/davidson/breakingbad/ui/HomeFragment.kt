@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.davidson.breakingbad.databinding.FragmentHomeBinding
 import com.davidson.breakingbad.viewmodels.HomeViewModel
+import com.davidson.breakingbad.viewmodels.HomeViewModelFactory
 
 
 class HomeFragment : Fragment() {
@@ -21,7 +23,9 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        viewModel = HomeViewModel()
+
+        val homeViewModelFactory = HomeViewModelFactory(requireActivity().application)
+        viewModel = ViewModelProvider(this, homeViewModelFactory)[HomeViewModel::class.java]
 
         binding.lifecycleOwner = viewLifecycleOwner
 

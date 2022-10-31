@@ -1,6 +1,7 @@
 package com.davidson.breakingbad.network
 
 
+import com.davidson.breakingbad.database.DatabaseBreakingBad
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
@@ -45,3 +46,17 @@ data class TestNetwork(
     @Json(name = "occupation")
     val occupation: List<String>,
 )
+
+fun List<TestNetwork>.asDatabaseModel(): List<DatabaseBreakingBad> {
+    return map {
+        DatabaseBreakingBad(
+            characterId = it.charId,
+            characterName = it.name,
+            characterNickName = it.nickname,
+            characterBirthDate = it.birthday,
+            characterImage = it.img,
+            characterStatus = it.status,
+            characterPortrayedBy = it.portrayed,
+        )
+    }
+}
